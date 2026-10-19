@@ -1,0 +1,38 @@
+#FROM debian:bullseye-slim
+FROM debian:bookworm-slim
+
+LABEL image.author.name="Laura Schüle"
+LABEL image.author.email="laura.schuele@student.uni-tuebingen.de"
+
+# Install dependencies
+RUN apt-get update && apt-get install -y curl ca-certificates
+# curl	Software package for transferring data, including downloading files from URLs.
+# ca-certificates	Package containing trusted certificates used to verify secure HTTPS connections.
+
+# Download and install Salmon
+RUN curl -L https://github.com/COMBINE-lab/salmon/releases/download/v1.5.2/salmon-1.5.2_linux_x86_64.tar.gz \
+    -o /tmp/salmon.tar.gz
+# # RUN	Executes the command during image construction.
+# curl	Downloads the Salmon archive from GitHub.
+# -L follows redirects, which GitHub uses for release downloads.
+#-o specifies the location and filename of our download.
+
+
+RUN tar -xzf /tmp/salmon.tar.gz && \
+    mv salmon-1.5.2_linux_x86_64/bin/* /usr/bin/ && \
+    mv salmon-1.5.2_linux_x86_64/lib/* /usr/lib/
+
+# -x	Extract files from an archive.
+# -z	Decompress the archive using gzip.
+# -f	Specifies that the next argument is the archive filename.
+# also move salmon executables and libraries:
+# mv	Moves or renames files and directories.
+# salmon-1.5.2_linux_x86_64/bin/	Source directory containing Salmon's executables.
+# *	Wildcard representing all non-hidden entries in the directory.
+# /usr/bin/	Destination directory for executable programs.
+
+# Set the PATH environment variable (to /usr/bin)
+ENV PATH="/usr/bin:${PATH}"
+
+# see https://training.seqera.io/2.1.5/es/basic_training/containers/#run-salmon-in-the-container
+

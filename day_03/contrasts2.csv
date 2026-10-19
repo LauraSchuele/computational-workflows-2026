@@ -1,0 +1,4 @@
+id,variable,reference,target
+injury_effect,Condition,Sham_Sal,SNI_Sal
+oxycodone_effect,Condition,Sham_Sal,Sham_oxy
+combined_effect,Condition,Sham_Sal,SNI_oxy

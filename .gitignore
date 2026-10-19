@@ -1,4 +1,41 @@
+# Nextflow temporary files
 /out_1/
-/work/
-/.nextflow/
-/.nextflow.log*
+**/work/
+**/.nextflow/
+**/.nextflow.log*
+**/.nextflow.cache/
+
+# Python and Jupyter
+**/.ipynb_checkpoints/
+**/__pycache__/
+*.pyc
+
+
+# Large sequencing files
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.bai
+*.cram
+
+# Day 2: downloaded data and pipeline outputs
+/day_02/fetchngs_out/
+#/day_02/fetchngs_results/
+/day_02/reference/
+#/day_02/rnaseq_out_allsamples/
+#/day_02/rnaseq_results/
+#/day_02/fastqc_docker_results/
+
+# Day 3: generated data and pipeline outputs
+#/day_03/results/
+/day_03/results2/
+/day_03/data/salmon.merged.gene_lengths.recreated.tsv
+
+# day 4:
+/day_04/fastqc_manual/
+
+# Day 5: notebook recovery copies
+/day_05/day_05_backup.ipynb
+/day_05/day_05_recovered.ipynb
